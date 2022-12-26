@@ -32,13 +32,16 @@
         <div class="carousel">
           <div class="over"></div>
 
-          <button class="carousel__button carousel__button--left">
+          <button
+            class="carousel__button carousel__button--left"
+            data-carousel-button="prev"
+          >
             <i class="fas fa-chevron-left"></i>
           </button>
 
           <div class="carousel__track-container">
-            <ul class="carousel__track">
-              <li class="carousel__slide current-slide">
+            <ul class="carousel__track" data-slides>
+              <li class="carousel__slide" data-active>
                 <img class="carousel__image" src="/images/pic1.png" alt="" />
               </li>
               <li class="carousel__slide">
@@ -50,12 +53,15 @@
             </ul>
           </div>
 
-          <button class="carousel__button carousel__button--right">
+          <button
+            class="carousel__button carousel__button--right"
+            data-carousel-button="next"
+          >
             <i class="fas fa-chevron-right"></i>
           </button>
 
           <div class="carousel__nav">
-            <button class="carousel__indicator current__slide"></button>
+            <button class="carousel__indicator" data-active></button>
             <button class="carousel__indicator"></button>
             <button class="carousel__indicator"></button>
           </div>

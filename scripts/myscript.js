@@ -1,67 +1,59 @@
 const track = document.querySelector('.carousel__track');
+const buttons = document.querySelectorAll('[data-carousel-button]')
 const slides = Array.from(track.children);
 const nextBtn = document.querySelector('.carousel__button--right'); 
 const prevBtn = document.querySelector('.carousel__button--left');
 const indicatorsNav = document.querySelector('.carousel__nav');
 const indicators = Array.from(indicatorsNav.children);
 
-const slideWidth = slides[0].getBoundingClientRect().width;
+const moveToSlide = (track, currentSlide, targetSlide, index) => {
 
+    if (index < 0) index = slides.length-1
+    if (index >= slides.length) index = 0
 
-// Arranging slides next to one another
-function setSlidePos()
-{
-    for (let i = 0; i < slides.length; i++){
-        slides[i].style.left = slideWidth * i + 'px';
-    }
+    slides[index].dataset.active = true
+    delete currentSlide.dataset.active
 }
 
+const indicatorMovement = (currentSlideIndicator, targetSlideIndicator, index) => {
 
+    if (index < 0) index = slides.length-1
+    if (index >= slides.length) index = 0
 
-
-// setSlidePos();
-
-const moveToSlide = (track, currentSlide, targetSlide) => {
-    // track.style.transform = `translateX(-${targetSlide.style.left})`;
-    currentSlide.classList.remove('current-slide');
-    targetSlide.classList.add('current-slide'); 
-
-}
-
-const indicatorMovement = (currentSlideIndicator, targetSlideIndicator) => {
-    currentSlideIndicator.classList.remove('current__slide');
-    targetSlideIndicator.classList.add('current__slide');
+    indicators[index].dataset.active = true
+    delete currentSlideIndicator.dataset.active
 }
 
 // prev button
 prevBtn.addEventListener('click', function (e){
-   const currentSlide = track.querySelector('.current-slide');
+   const currentSlide = track.querySelector('[data-active]');
    const prevSlide = currentSlide.previousElementSibling;
-   moveToSlide(track, currentSlide, prevSlide)
+   const offset = prevBtn.dataset.carouselButton === "prev" ? -1 : 1
+
+   let newIndex = slides.indexOf(currentSlide) + offset
+
+   moveToSlide(track, currentSlide, prevSlide, newIndex)
    
-   const currentSlideIndicator = indicatorsNav.querySelector('.current__slide');
+   const currentSlideIndicator = indicatorsNav.querySelector('[data-active]');
    const prevSlideIndicator = currentSlideIndicator.previousElementSibling;
 
-   console.log(currentSlide)
-   console.log(prevSlide)
-   indicatorMovement(currentSlideIndicator, prevSlideIndicator);
-
-
+   indicatorMovement(currentSlideIndicator, prevSlideIndicator, newIndex);
 })
 
 // next button
 nextBtn.addEventListener('click', function (e){
-    const currentSlide = track.querySelector('.current-slide');
+    const currentSlide = track.querySelector('[data-active]');
     const nextSlide = currentSlide.nextElementSibling;
-  
-    moveToSlide(track, currentSlide, nextSlide)
+    const offset = nextBtn.dataset.carouselButton === "next" ? 1 : - 1
+
+    let newIndex = slides.indexOf(currentSlide) + offset
     
-    const currentSlideIndicator = indicatorsNav.querySelector('.current__slide');
+   moveToSlide(track, currentSlide, nextSlide, newIndex)
+    
+    const currentSlideIndicator = indicatorsNav.querySelector('[data-active]');
     const nextSlideIndicator = currentSlideIndicator.nextElementSibling;
 
-    console.log(currentSlide)
-    console.log(nextSlide)
-    indicatorMovement(currentSlideIndicator, nextSlideIndicator);
+    indicatorMovement(currentSlideIndicator, nextSlideIndicator, newIndex);
  })
 
 
@@ -69,25 +61,12 @@ nextBtn.addEventListener('click', function (e){
 indicatorsNav.addEventListener('click', function (e) {
     const targetIndicator = e.target.closest('button');
 
-    const currentSlide = track.querySelector('.current-slide');
-    const currentIndex = indicatorsNav.querySelector('.current__slide')
+    const currentSlide = track.querySelector('[data-active]');
+    const currentIndex = indicatorsNav.querySelector('[data-active]');
     const targetIndex = indicators.findIndex(indicator => indicator === targetIndicator);
     const targetSlide = slides[targetIndex];
 
-    moveToSlide(track, currentSlide, targetSlide)
+    moveToSlide(track, currentSlide, targetSlide, targetIndex)
 
-    indicatorMovement(currentIndex, targetIndicator)
+    indicatorMovement(currentIndex, targetIndicator, targetIndex)
 })
-
-
-//loop
-
-function loopThrough(){
-    if (slides[0].classList.contains('current-slide')){
-        alert('first page is the current slide')
-    } else if (slides[slides.length-1].classList.contains('current-slide')){
-        alert('last page is the current slide')
-    } else{
-        alert('middle pages is the current slide')
-    }
-}

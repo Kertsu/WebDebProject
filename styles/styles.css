@@ -83,7 +83,7 @@ section .more{
     transition-delay: 400ms;
 }
 
-.current-slide{
+.carousel__slide[data-active]{
     opacity: 1;
     transition-delay: 0;
 }
@@ -178,6 +178,7 @@ section .more{
     cursor: pointer;
 }
 
-.current__slide{
+.carousel__indicator[data-active]{
     background: rgba(0, 0, 0, 0.75);
+    transition: all 400ms ease;
 }
