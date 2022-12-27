@@ -8,15 +8,22 @@
 
 body{
     font-family: 'Poppins', sans-serif;
+    background-color: rgb(233, 233, 233);
+    color: #030303;
+}
+
+section{
+    height: 100vh;
+    width: 100%;
 }
 
 /* section 1 */
 section .less{
-    padding: 2em;
+    padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 32vh;
+    height: 38vh;
 }
 
 section div span:nth-child(1){
@@ -31,7 +38,7 @@ section div span:nth-child(2){
 }
 
 section .more{
-    height: 68vh;
+    height: 62vh;
 }
 
 /* Carousel */
@@ -45,14 +52,14 @@ section .more{
 
 .carousel{
     position: relative;
-    height: 68vh;
+    height: 62vh;
     width: 100%;
 }
 
 .carousel__image{
     display: block;
     width: 100vw;
-    height: 68vh;
+    height: 62vh;
     object-fit: cover;
     object-position: center;
 }
@@ -221,4 +228,55 @@ section .more{
     bottom: 5%;
     transform: translateX(-50%);
     position: absolute;
+}
+
+
+/* section 2 */
+body section:nth-child(2){
+    display: flex;
+}
+
+body section:nth-child(2) div.less{
+    width: 38vw;
+    height: 100vh;
+    padding: 2rem;
+}
+
+body section:nth-child(2) div.less img{
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body section:nth-child(2) div.more{
+    width: 62vw;
+    height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+body section:nth-child(2) div.more .less{
+    width: 100%;
+    height: 38%;
+    display: flex;
+    justify-content: start;
+    align-items: flex-end;
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+body section:nth-child(2) div.more .more{
+    width: 100%;
+    height: 62%;
+    display: flex;
+    align-items: flex-end;
+    font-size: 3rem;
+    font-weight: 300;
+    gap: 1rem;
+}
+
+
+body section:nth-child(2) div.more .more p{
+    font-size: 1.25rem;
+    width: 50%;
 }
