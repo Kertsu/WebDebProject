@@ -245,6 +245,12 @@ body section:nth-child(2) div.less{
 body section:nth-child(2) div.less img{
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 1rem .5rem rgba(0, 0, 0, 0.3);
+    transition: all .7s;
+}
+
+body section:nth-child(2) div.less img:hover{
+    box-shadow: 0 0 1rem .5rem rgba(0, 0, 0, 0.5);
 }
 
 body section:nth-child(2) div.more{
