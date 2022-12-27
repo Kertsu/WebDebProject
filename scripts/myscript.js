@@ -87,7 +87,7 @@ for (let i = 0; i < indicators.length; i++)
 {
     indicators[i].addEventListener('mouseover', function (e)
     {
-            let pos = indicators[i].getBoundingClientRect().x +5+ 'px'
+            let pos = indicators[i].getBoundingClientRect().x -25 + 'px'
             thumbnails[i].style.left = pos  
 
             thumbnails[i].dataset.active = true;
