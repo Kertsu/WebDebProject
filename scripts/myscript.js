@@ -61,12 +61,19 @@ nextBtn.addEventListener('click', function (e){
 indicatorsNav.addEventListener('click', function (e) {
     const targetIndicator = e.target.closest('button');
 
+    if (!targetIndicator) return;
+
     const currentSlide = track.querySelector('[data-active]');
     const currentIndex = indicatorsNav.querySelector('[data-active]');
     const targetIndex = indicators.findIndex(indicator => indicator === targetIndicator);
     const targetSlide = slides[targetIndex];
 
-    moveToSlide(track, currentSlide, targetSlide, targetIndex)
+    if (targetSlide != currentSlide)
+    {
+        moveToSlide(track, currentSlide, targetSlide, targetIndex)
 
-    indicatorMovement(currentIndex, targetIndicator, targetIndex)
+        indicatorMovement(currentIndex, targetIndicator, targetIndex)
+
+    }
+
 })
