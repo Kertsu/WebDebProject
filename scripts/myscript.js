@@ -1,18 +1,21 @@
 const track = document.querySelector('.carousel__track');
-const buttons = document.querySelectorAll('[data-carousel-button]')
+const buttons = document.querySelectorAll('[data-carousel-button]');
 const slides = Array.from(track.children);
 const nextBtn = document.querySelector('.carousel__button--right'); 
 const prevBtn = document.querySelector('.carousel__button--left');
 const indicatorsNav = document.querySelector('.carousel__nav');
 const indicators = Array.from(indicatorsNav.children);
 
+const thumbnails = Array.from(document.querySelectorAll('.thumbnail__image'));
+
+
 const moveToSlide = (track, currentSlide, targetSlide, index) => {
 
-    if (index < 0) index = slides.length-1
-    if (index >= slides.length) index = 0
+    if (index < 0) index = slides.length-1;
+    if (index >= slides.length) index = 0;
 
-    slides[index].dataset.active = true
-    delete currentSlide.dataset.active
+    slides[index].dataset.active = true;
+    delete currentSlide.dataset.active;
 }
 
 const indicatorMovement = (currentSlideIndicator, targetSlideIndicator, index) => {
@@ -77,3 +80,26 @@ indicatorsNav.addEventListener('click', function (e) {
     }
 
 })
+
+
+//thumbnail
+for (let i = 0; i < indicators.length; i++)
+{
+    indicators[i].addEventListener('mouseover', function (e)
+    {
+            let pos = indicators[i].getBoundingClientRect().x + 'px'
+            thumbnails[i].style.left = pos  
+
+            thumbnails[i].dataset.active = true;
+    })
+
+}
+
+for (let i = 0; i < indicators.length; i++)
+{
+    indicators[i].addEventListener('mouseout', function (e)
+    {
+            delete thumbnails[i].dataset.active;
+    })
+
+}

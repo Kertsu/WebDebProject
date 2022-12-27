@@ -182,3 +182,43 @@ section .more{
     background: rgba(0, 0, 0, 0.75);
     transition: all 400ms ease;
 }
+
+/* thumbnail */
+
+.thumbnail__track{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.thumbnail__image{
+    height: 4rem;
+    border: 1px solid white;
+    box-shadow: 0 0 0 .2rem rgba(0, 0, 0, 0.3);
+    visibility: hidden;
+}
+
+.thumbnail__image[data-active]{
+    visibility: visible;
+}
+
+.thumbnail__image--1{
+    position: absolute;
+    bottom: 5%;
+    transform: translateX(-50%);
+    position: absolute;
+}
+
+.thumbnail__image--2{
+    position: absolute;
+    bottom: 5%;
+    transform: translateX(-50%);
+    position: absolute;
+}
+
+.thumbnail__image--3{
+    position: absolute;
+    bottom: 5%;
+    transform: translateX(-50%);
+    position: absolute;
+}
