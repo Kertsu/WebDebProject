@@ -255,6 +255,9 @@ body section:nth-child(2) div.less img{
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 1rem .5rem rgba(0, 0, 0, 0.3);
     transition: all .7s;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 body section:nth-child(2) div.less img:hover{
@@ -274,9 +277,10 @@ body section:nth-child(2) div.more .less{
     height: 38%;
     display: flex;
     justify-content: start;
-    align-items: flex-end;
+    align-items: end;
     font-size: 3rem;
     font-weight: 300;
+    padding: 2rem;
 }
 
 body section:nth-child(2) div.more .more{
