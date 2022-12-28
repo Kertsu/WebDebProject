@@ -10,6 +10,11 @@
 img{
     box-shadow: 0 0 1rem .5rem rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: box-shadow 700ms;
+}
+
+img:hover{
+    box-shadow: 0 0 1rem .5rem rgba(0, 0, 0, 0.5);
 }
 
 body{
@@ -372,3 +377,76 @@ body section:nth-child(3) div.more > div img{
 }
 
 /* section 4 */
+body section:nth-child(4){
+    display: flex;
+    padding: 6rem 2rem 0 2rem;
+    gap: 4rem;
+}
+
+body section:nth-child(4) div.more{
+    height: 100%;
+    width: 62vw;
+    padding: 2rem 0;
+    display: flex;
+}
+
+body section:nth-child(4) div.more .less{
+    width: 38%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 2rem;
+    padding: 5rem 4rem;
+    align-items: start;
+    text-align: start;
+}
+
+body section:nth-child(4) div.more .more{
+    width: 62%;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+body section:nth-child(4) div.more .more img{
+    width: 100%;
+    height: 72%;
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+body section:nth-child(4) div.less {
+    flex-direction: column;
+    width: 38vw;
+    height: 100%;
+    padding: 2rem 0;
+}
+
+body section:nth-child(4) div.less .less{
+    width: 100%;
+    height: 28%;
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    padding-top: 1rem;
+}
+
+body section:nth-child(4) div.less .less p{
+    width: 50%;
+}
+
+body section:nth-child(4) div.less .more{
+    width: 100%;
+    height: 72%;
+    align-items: end;
+    padding: 0;
+}
+
+body section:nth-child(4) div.less .more img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 0;
+}
