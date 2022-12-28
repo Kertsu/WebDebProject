@@ -8,6 +8,7 @@ const indicators = Array.from(indicatorsNav.children);
 
 const thumbnails = Array.from(document.querySelectorAll('.thumbnail__image'));
 
+let isClicked = false
 
 const moveToSlide = (track, currentSlide, targetSlide, index) => {
 
@@ -27,12 +28,44 @@ const indicatorMovement = (currentSlideIndicator, targetSlideIndicator, index) =
     delete currentSlideIndicator.dataset.active
 }
 
+// autoplay
+var counter = 0;
+var auto = setInterval((autoPlay), 3000)
+
+function autoPlay(){
+    console.log(counter)
+if (counter > slides.length - 1){
+    counter = 0
+    delete slides[slides.length-1].dataset.active
+    delete indicators[slides.length-1].dataset.active
+    slides[counter].dataset.active = true;
+    indicators[counter].dataset.active = true;
+} 
+if (counter > 0){
+    slides[counter].dataset.active = true;
+    delete slides[counter - 1].dataset.active
+    indicators[counter].dataset.active = true;
+    delete indicators[counter - 1].dataset.active
+} 
+
+if (!counter > slides.length - 1 && !counter > 0){
+counter++;
+}
+counter++;
+}
+
 // prev button
 prevBtn.addEventListener('click', function (e){
    const currentSlide = track.querySelector('[data-active]');
    const prevSlide = currentSlide.previousElementSibling;
    const offset = prevBtn.dataset.carouselButton === "prev" ? -1 : 1
 
+   isClicked = true
+   if (isClicked == true){
+    isClicked = false
+    clearInterval(auto)
+    
+}
    let newIndex = slides.indexOf(currentSlide) + offset
 
    moveToSlide(track, currentSlide, prevSlide, newIndex)
@@ -41,6 +74,7 @@ prevBtn.addEventListener('click', function (e){
    const prevSlideIndicator = currentSlideIndicator.previousElementSibling;
 
    indicatorMovement(currentSlideIndicator, prevSlideIndicator, newIndex);
+
 })
 
 // next button
@@ -49,6 +83,13 @@ nextBtn.addEventListener('click', function (e){
     const nextSlide = currentSlide.nextElementSibling;
     const offset = nextBtn.dataset.carouselButton === "next" ? 1 : - 1
 
+   isClicked = true
+   if (isClicked == true){
+    isClicked = false
+    clearInterval(auto)
+    
+
+}
     let newIndex = slides.indexOf(currentSlide) + offset
     
    moveToSlide(track, currentSlide, nextSlide, newIndex)
@@ -73,6 +114,13 @@ indicatorsNav.addEventListener('click', function (e) {
 
     if (targetSlide != currentSlide)
     {
+        isClicked = true
+        if (isClicked == true){
+            isClicked = false
+            clearInterval(auto)
+            
+
+        }
         moveToSlide(track, currentSlide, targetSlide, targetIndex)
 
         indicatorMovement(currentIndex, targetIndicator, targetIndex)
@@ -80,7 +128,6 @@ indicatorsNav.addEventListener('click', function (e) {
     }
 
 })
-
 
 //thumbnail
 for (let i = 0; i < indicators.length; i++)
